@@ -1,0 +1,65 @@
+
+* 데이터베이스 스키마 (15.12.31)
+
+●member(m_no,id,pwd,name,gender,address,e_mail,level)
+
+CREATE TABLE member(
+	m_no int(4) NOT NULL AUTO_INCREMENT,
+	id varchar(10) NOT NULL,
+	pwd varchar(15) NOT NULL,
+	name varchar(15) NOT NULL,
+	gender char(1) NOT NULL,
+	address varchar(20) NOT NULL,
+	birth date not null,
+	e_mail varchar(20),
+	level varchar(15),
+	PRIMARY KEY(m_no)
+	);
+
+INSERT INTO `member` VALUES ('1','root1', '1', 'NAME1', 'F','Pohang', '950101','950101@hanmail.net', 'Root');
+INSERT INTO `member` VALUES ('2','admin1', '2', 'NAME2', 'M','Seoul', '931225','ggg@hanmail.net', 'Administrator');
+INSERT INTO `member` VALUES ('3','local1', '4', 'NAME3', 'M','Daegu', '920815','oh@hanmail.net', 'Local_Manager');
+INSERT INTO `member` VALUES ('4','4', '4', 'NAME4', 'M','Busan', '960123','no@hanmail.net', 'Administrator');
+
+●student(s_no,name,gender,address,e_mail)
+
+CREATE TABLE student(
+	s_no int(4) NOT NULL AUTO_INCREMENT,
+	name varchar(15) NOT NULL,
+	gender char(1) NOT NULL,
+	address varchar(20) NOT NULL,
+	birth date not null,
+	e_mail varchar(20),
+	PRIMARY KEY(s_no)
+	);
+
+INSERT INTO `student` VALUES ('1','STU1', 'M', 'Pohang', '960124','pooh@naver.com');
+INSERT INTO `student` VALUES ('2','STU2', 'M', 'Gwangju', '930909','moon@naver.com');
+
+●asset(a_no,sn,name,location,manager)
+
+CREATE TABLE asset(
+	a_no int(4) NOT NULL AUTO_INCREMENT,
+	sn varchar(25) NOT NULL,
+	name varchar(15) NOT NULL,
+	location varchar(20) NOT NULL,
+	m_no int NOT NULL,
+	PRIMARY KEY(a_no),
+	FOREIGN KEY(m_no) REFERENCES member(m_no)
+	);
+
+INSERT INTO `asset` VALUES ('1','A4425','ASSET1', 'Pohang', 3);
+INSERT INTO `asset` VALUES ('2','A4426','ASSET2', 'Pohang', 3);
+
+●announcement(idx, title, writer, date, hit)
+
+CREATE TABLE announcement(
+	idx int(4) NOT NULL AUTO_INCREMENT,
+	title varchar(20) NOT NULL,
+	writer varchar(15) NOT NULL,
+	date varchar(15) NOT NULL,
+	hit int(10),
+	PRIMARY KEY(idx)
+	);
+
+INSERT INTO `announcement` VALUES ('1','title1', 'NAME5', '151231', '14');
